@@ -1,0 +1,21 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      PORT: ${PORT}
+      HOST: ${HOST}
+      LOG_LEVEL: ${LOG_LEVEL}
+      APP_KEY: ${APP_KEY}
+      APP_URL: ${APP_URL}
+      SESSION_DRIVER: ${SESSION_DRIVER}
+      RAPID_API_KEY: ${RAPID_API_KEY}
+      API_URL: ${API_URL}
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
